@@ -1,0 +1,35 @@
+/* styling for the fixed button in the bottom left before click */
+#reactButton{
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    z-index: 99999;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: cover !important;
+}
+/* the container containing all of the available reactions */
+#reactContainer{
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background: radial-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4));
+    backdrop-filter: blur(3px);
+    z-index: 99999;
+}
+.react{
+    display: none;
+    position: fixed;
+    border: 1px solid black;
+    border-radius: 50%;
+    z-index: 100000;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: cover !important;
+}

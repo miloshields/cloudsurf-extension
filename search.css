@@ -1,0 +1,32 @@
+.emojiArea{
+    position: relative;
+}
+.emoji{
+    position: absolute;
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* style each individual emoji reaction */
+.num1{
+    top: 24px;
+    left: -30px;
+    height: 24px;
+    width: 24px;
+    z-index: 4;
+}
+.num2{
+    top: 44px;
+    left: -28px;
+    height: 20px;
+    width: 20px;
+    z-index: 3;
+}
+.num3{
+    top: 62px;
+    left: -26px;
+    height: 16px;
+    width: 16px;
+    z-index: 2;
+}
