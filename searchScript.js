@@ -44,7 +44,7 @@ var getReactsFunc = function(url)
     var xhr = new XMLHttpRequest();
     console.log("Right here team!");
 
-    xhr.open("POST","https://f2f5b818f0d0.ngrok.io/getReacts", true);
+    xhr.open("POST","https://the-prism.herokuapp.com/getReacts", true);
     xhr.setRequestHeader("Content-type","application/json");
     xhr.onreadystatechange = function (e) {
         console.log("Ready state changed.");

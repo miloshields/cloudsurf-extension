@@ -1,0 +1,77 @@
+#profilePic{
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    background-color: black;
+
+}
+body{
+    width: 400px;
+    height: 200px;
+}
+#header{
+    display: flex;
+}
+#welcomeContain{
+    padding-left: 20px;
+    padding-top: 10px;
+}
+#welcome{
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+#message{
+    font-size: 1.25em;
+}
+#info{
+    margin: auto;
+    margin-top: 5px;
+    vertical-align: center;
+    width: 400px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+#discovery{
+    width: 400px;
+    height: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#content{
+    width: 400px;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    
+}
+#regions{
+    width: 190px;
+    height: 90px;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.region{
+    margin-left: 20px;
+    font-weight: 700;
+    font-size: 1.2em;
+}
+#recommended{
+    width: 190px;
+    height: 90px;
+    background-color: blue;
+}
+.statHeader{
+    font-size: 1.2em;
+    width: 190px;
+}
+#dpoints{
+    font-weight: 700;
+}
+#rank{
+    font-weight: 700;
+}
+

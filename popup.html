@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <style>
-            button {
-                height: 30px;
-                width: 30px;
-                outline: none;
-            }
-        </style>
+    <head>    
+        <link rel="stylesheet" type="text/css" href="popup.css">
     </head>
     <body>
-        <button id="changeColor"></button>
+        <section id = "header">
+            <div id = "profilePic"></div>
+            <div id = "welcomeContain">
+                <div id = "welcome">Welcome back, explorer!</div>
+                <div id = "message">It's a great day to democratize the web.</div>
+            </div>
+        </section> 
+        <section id = "info">
+            <section id = "discovery">
+                <div class = "statHeader">Discovery Points: <span id="dpoints">1793</span></div>
+                <div class = "statHeader">Rank: <span id="rank">Navigator</span> </div>
+            </section>
+            <section id = "content">
+                <section id = "regions">
+                    <div class = "statHeader">Your Recent Regions:</div>
+                    <div class = "region" id = "region1">News</div>
+                    <div class = "region" id = "region2">Computer Science</div>
+                    <div class = "region" id = "region3">Psychology</div>
+                </section>
+                <section id = "recommended"></section>
+            </section>
+        </section> 
         <script src="popup.js"></script>
     </body>
 </html>

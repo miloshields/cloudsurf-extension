@@ -38,7 +38,7 @@ function handleReact(reactType) {
         page_url: window.location.toString()
     };
     var req = new XMLHttpRequest();
-    req.open("POST","https://f2f5b818f0d0.ngrok.io/react", true);
+    req.open("POST","https://the-prism.herokuapp.com/react", true);
     req.setRequestHeader("Content-type","application/json");
     req.onload = function (e) {
         if (req.readystate === 4) {
