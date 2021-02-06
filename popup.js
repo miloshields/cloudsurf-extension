@@ -1,6 +1,32 @@
 // script used by popup.html, which is opened on extension activation from
 // extension bar
 
+//functions to change name, links, rank, discovery points, and regions, respectively
+
+function setName(name)
+{
+    document.getElementById("name").innerHTML = name;
+}
+function setLink(linkNum, url)
+{
+    if(linkNum > 3) console.log("Invalid region index requested.")
+    linkElem = document.getElementById("link"+linknum);
+    linkElem.setAttribute("href",url);
+}
+function setRank(rank)
+{
+    document.getElementById("rank").innerHTML = rank;
+}
+function setDiscoveryPoints(points)
+{
+    document.getElementById("dpoints").innerHTML = points;
+}
+function setRegion(regionNum, region)
+{
+    if(regionNum > 3) console.log("Invalid region index requested.")
+    document.getElementById("region"+num).innerHTML = region;
+}
+
 // let changeColor = document.getElementById('changeColor');
 
 // make the previously gray button green by getting the 'color' attribute
