@@ -5,7 +5,25 @@
     </head>
     <body>
         <section id = "header">
-            <div id = "profilePic"></div>
+            <div id = "profilePic">      
+                <svg width="80%" height="80%" viewBox="0 0 372 272" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="Front-triangle">
+                    <path id="Vector 1" d="M2.22065 268.73H217" stroke="black" stroke-width="5"/>
+                    <path id="Vector 3" d="M2 269L109.629 23.1698" stroke="black" stroke-width="5"/>
+                    <path id="Vector 5" d="M108.884 23.269L216.274 268.552" stroke="black" stroke-width="5"/>
+                    </g>
+                    <g id="Back-triangle">
+                    <path id="Vector 2" d="M150.194 209.201L364 209.201" stroke="black" stroke-width="5"/>
+                    <path id="Vector 6" d="M150 210L256.903 2.54476" stroke="black" stroke-width="5"/>
+                    <path id="Vector 7" d="M256.985 2.35764L363.888 209.813" stroke="black" stroke-width="5"/>
+                    </g>
+                    <g id="Connectors">
+                    <path id="Vector 8" d="M109 25L257 3" stroke="black" stroke-width="6"/>
+                    <path id="Vector 10" d="M2 267L153 209" stroke="black" stroke-width="6"/>
+                    <path id="Vector 9" d="M216 269L364 205" stroke="black" stroke-width="6"/>
+                    </g>
+                </svg>
+            </div>
             <div id = "welcomeContain">
                 <div id = "welcome">Welcome back, explorer!</div>
                 <div id = "message">It's a great day to democratize the web.</div>
@@ -19,11 +37,16 @@
             <section id = "content">
                 <section id = "regions">
                     <div class = "statHeader">Your Recent Regions:</div>
-                    <div class = "region" id = "region1">News</div>
-                    <div class = "region" id = "region2">Computer Science</div>
-                    <div class = "region" id = "region3">Psychology</div>
+                    <div class = "statItem" id = "region1">News</div>
+                    <div class = "statItem" id = "region2">Computer Science</div>
+                    <div class = "statItem" id = "region3">Psychology</div>
                 </section>
-                <section id = "recommended"></section>
+                <section id = "recommended">
+                    <div class = "statHeader">More Stuff:</div>
+                    <div class = "statItem"><a href = "google.com">Your Discoveries</a></div>
+                    <div class = "statItem"><a href = "google.com">Suggested Areas</a></div>
+                    <div class = "statItem"><a href = "google.com">Suggested Explorers</a></div> 
+                </section>
             </section>
         </section> 
         <script src="popup.js"></script>
