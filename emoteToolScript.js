@@ -1,9 +1,13 @@
 //dictionary mapping reaction types to their corresponding image paths'
 var typeToPath = {
-    "like" : "images/like.png",
-    "love" : "images/love.png",
-    "laugh" : "images/laugh.png"
+    "like" : "128077", //"images/like.png",
+    "love" : "128151", //"images/love.png",
+    "laugh" : "129315" //images/laugh.png"
 };
+
+function htmlify(reactType){
+    return "&#" + typeToPath[reactType] + ";"
+}
 
 //create a button reaction using the image path (a png)
 // and the coordinates from the bottom left
@@ -14,8 +18,11 @@ function makeReact(reactType, left, bottom, size) {
     react.style.bottom = bottom + "px";
     react.style.width = size + "px";
     react.style.height = size + "px";
-    var path = chrome.extension.getURL("" + typeToPath[reactType]);
-    react.style.background = "url(" + path + ")";
+    let emoji  = document.createElement('span');
+    emoji.innerHTML = htmlify(reactType);
+    react.appendChild(emoji);  
+    //var path = chrome.extension.getURL("" + typeToPath[reactType]);
+    //react.style.background = "url(" + path + ")";
     react.onclick = function(){handleReact(reactType)};
     document.body.append(react);
 }
@@ -35,10 +42,10 @@ function openReacts() {
 function handleReact(reactType) {
     var data = {
         type: reactType,
-        page_url: window.location.toString()
+        url: window.location.toString()
     };
     var req = new XMLHttpRequest();
-    req.open("POST","https://f2f5b818f0d0.ngrok.io/react", true);
+    req.open("POST","https://the-prism.herokuapp.com/react", true);
     req.setRequestHeader("Content-type","application/json");
     req.onload = function (e) {
         if (req.readystate === 4) {
@@ -56,14 +63,18 @@ function handleReact(reactType) {
     req.send(JSON.stringify(data));
     //close the react, setting the new background for the react button
     // to be the selected reaction
-    var path = chrome.extension.getURL("" + typeToPath[reactType]);
-    closeReacts(path);
+    closeReacts(reactType);
 }
 //close the set of reactions, replace smaller button with
 // selected reaction, if applicable
-function closeReacts(imagePath) {
-    if(imagePath != "no-select") {
-        document.getElementById("reactButton").style.background = "url(" + imagePath + ")";
+function closeReacts(reactType) {
+    if (reactType != "no-select") {
+        react = document.getElementById("reactButton")
+        react.style.background = "none";
+        span = document.getElementById("selectedEmotion");
+        span.innerHTML = htmlify(reactType);
+        span.style.fontSize = "30px";
+        //react.background.style.display = "none";
     } 
     // hide the react container
     document.getElementById("reactContainer").style.display = "none";
@@ -79,6 +90,9 @@ function closeReacts(imagePath) {
 var reactButton = document.createElement( 'div' );
 reactButton.setAttribute("id", "reactButton");
 reactButton.style.background = "url(" + chrome.extension.getURL("images/badPrismLogo.png") + ")";
+span = document.createElement('span');
+span.setAttribute("id", "selectedEmotion");
+reactButton.appendChild(span);
 reactButton.onclick = function(){openReacts()};
 
 var reactContainer = document.createElement( 'div' );

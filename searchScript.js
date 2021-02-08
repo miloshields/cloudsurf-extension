@@ -1,12 +1,11 @@
 // this will be generated using database requests eventually, but is hardcoded
 
-
 // for the purposes of this mvp TODO add database functionality!
 var image_paths = ["images/like.png","images/love.png","images/laugh.png"];
 
 //get array of search result divs
-var resultDivs = document.getElementsByClassName("g");
-
+var resultDivs = [...document.getElementsByClassName("g")]; //convert to array
+console.log(resultDivs);
 //takes the div containing a search result link and scrapes the link
 // from it
 function getLink(div) {
@@ -29,32 +28,25 @@ function getLink(div) {
         }
     }
     children = children[index].children
-    for (let i=0; i < children.length; i++) {
+    for (let i = 0; i < children.length; i++) {
         if(children[i].tagName = "A") {
-            console.log(children[i].getAttribute("href"));
             return(children[i].getAttribute("href"));
         }
     }
 
 }
+
 //send a POST request to the server, asking for three image paths
 // and maybe other data in the future.
 var getReactsFunc = function(url)
 {
     var xhr = new XMLHttpRequest();
-    console.log("Right here team!");
-
-    xhr.open("POST","https://f2f5b818f0d0.ngrok.io/getReacts", true);
+    xhr.open("POST", "https://the-prism.herokuapp.com/getReacts", true);
     xhr.setRequestHeader("Content-type","application/json");
     xhr.onreadystatechange = function (e) {
-        console.log("Ready state changed.");
-        console.log("Ready state is "+xhr.readyState);
         if (xhr.readyState == 4) {
-            console.log("Ready state is 4!");
-            if (xhr.status === 200) {
-                console.log("Successfully received response.");
-                console.log("Response:");
-                console.log(xhr.responseText);
+           if (xhr.status === 200) {
+                console.log("Response:", xhr.responseText);
             }
             else{
                 console.log("Something broke.")
@@ -62,27 +54,26 @@ var getReactsFunc = function(url)
             }
         }
     }
-    // req.onerror = function (e) {
-    //     console.error(req.statusText);
-    // };
-    console.log("about to send request");
-    xhr.send(JSON.stringify({ data: "cool"})); 
+    xhr.send(JSON.stringify({ 'url': url})); 
 }
 
 
 // for each result div, make a corresponding area to put emojis
 // if it is a regular result type
-for (let div of resultDivs) {
-    if(div.classList.length == 1){
-        //  react data (image paths) for each page
+while (resultDivs.length != 0) {
+    div = resultDivs.shift();
+    if (div.classList.length == 1) {
         //get links to each google result page
         var url = getLink(div);
+
+        //get react data
         getReactsFunc(url);
 
         //make the corresponding emojis
-        makeEmojis(image_paths,div);
+        makeEmojis(image_paths, div);
     }
 }
+
 
 // make a div that contains 1-3 image parameters (string paths) specified as arguments
 // note - if less than three are provided, only those provided should be used.
@@ -91,11 +82,15 @@ for (let div of resultDivs) {
 function makeEmojis(paths, emojiArea) {
     emojiArea.setAttribute('class',"g emojiArea");
 
+    let emo_value = 128511;
     for (let i = 0; i < 3; i++) {
-        var emoji = document.createElement("div");
-        emoji.style.backgroundImage = "url(" + chrome.runtime.getURL(paths[i]) + ")";
-        emojiArea.appendChild(emoji);
-        emoji.setAttribute('class',"emoji num"+(i+1));
-	    emoji.style.zIndex = "0";
+        emo_value += 1;
+        var emojiDiv = document.createElement("div");
+        const emoji  = document.createElement('span');
+        emoji.innerHTML = "&#" + emo_value.toString() + ";";
+        emojiDiv.appendChild(emoji);  
+        emojiArea.appendChild(emojiDiv);
+        emojiDiv.setAttribute('class', "emoji num" + ( i + 1 ));
+	    emojiDiv.style.zIndex = "0";
     }
 }
