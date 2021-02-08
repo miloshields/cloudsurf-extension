@@ -41,7 +41,7 @@ function getLink(div) {
 var getReactsFunc = function(url)
 {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://the-prism.herokuapp.com/getReacts", true);
+    xhr.open("POST","https://the-prism.herokuapp.com/getReacts", true);
     xhr.setRequestHeader("Content-type","application/json");
     xhr.onreadystatechange = function (e) {
         if (xhr.readyState == 4) {
