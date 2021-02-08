@@ -9,10 +9,6 @@ function htmlify(reactType){
     return "&#" + typeToPath[reactType] + ";"
 }
 
-function getElem(varname){
-    return document.getElementById(varname);
-}
-
 //create a button reaction using the image path (a png)
 // and the coordinates from the bottom left
 function makeReact(reactType, left, bottom, size) {
@@ -31,8 +27,8 @@ function makeReact(reactType, left, bottom, size) {
 //hide the small button, open the div of reactions
 function openReacts() {
     
-    getElem("reactButton").style.display = "none";      // hide button
-    getElem("reactContainer").style.display = "block";  // show emoji container
+    document.getElementById("reactButton").style.display = "none";      // hide button
+    document.getElementById("reactContainer").style.display = "block";  // show emoji container
     
     // stuff them in a new, larger div
     var reacts = document.getElementsByClassName("react");
@@ -72,17 +68,17 @@ function handleReact(reactType) {
 // selected reaction, if applicable
 function closeReacts(reactType) {
     if (reactType != "no-select") {
-        react                  = getElem("reactButton")
+        react                  = document.getElementById("reactButton")
         react.style.background = "none";
         react.style.cursor     = "pointer";
         
-        span                   = getElem("selectedEmotion");
+        span                   = document.getElementById("selectedEmotion");
         span.innerHTML         = htmlify(reactType);
         span.style.fontSize    = "30px";
     } 
     
-    getElem("reactContainer").style.display = "none";  // hide react container
-    getElem("reactButton").style.display    = "block"; //show button with new background
+    document.getElementById("reactContainer").style.display = "none";  // hide react container
+    document.getElementById("reactButton").style.display    = "block"; //show button with new background
 
     var reacts = document.getElementsByClassName("react");
     for(let i = 0; i < reacts.length; i++) {
@@ -91,7 +87,7 @@ function closeReacts(reactType) {
 }
 
 //add divs to dom
-var reactButton = getElem( 'div' );
+var reactButton = document.getElementById( 'div' );
 reactButton.setAttribute("id", "reactButton");
 reactButton.style.background = "url(" + chrome.extension.getURL("images/badPrismLogo.png") + ")";
 
@@ -100,7 +96,7 @@ span.setAttribute("id", "selectedEmotion");
 reactButton.appendChild(span);
 reactButton.onclick = function(){openReacts()};
 
-var reactContainer = getElem( 'div' );
+var reactContainer = document.getElementById( 'div' );
 reactContainer.setAttribute("id","reactContainer");
 reactContainer.style.display = "none";
 reactContainer.onclick = function(){closeReacts("no-select")};
