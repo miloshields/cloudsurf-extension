@@ -14,29 +14,28 @@ function htmlify(reactType){
 function makeReact(reactType, left, bottom, size) {
     react = document.createElement('div');
     react.setAttribute("class","react");
-    react.style.left     = left + "px";
-    react.style.bottom   = bottom + "px";
-    react.style.cursor   = "pointer";
-    let emoji            = document.createElement('span');
-    emoji.innerHTML      = htmlify(reactType);
-    emoji.style.fontSize = "25px";
+    react.style.left   = left + "px";
+    react.style.bottom = bottom + "px";
+    react.style.cursor = "pointer";
+    let emoji          = document.createElement('span');
+    emoji.innerHTML    = htmlify(reactType);
+    emoji.style.fontSize = "25px;"
     react.appendChild(emoji);  
-    react.onclick        = function(){handleReact(reactType)};
+    react.onclick = function(){handleReact(reactType)};
     document.body.append(react);
 }
 //hide the small button, open the div of reactions
 function openReacts() {
-    
-    document.getElementById("reactButton").style.display = "none";      // hide button
-    document.getElementById("reactContainer").style.display = "block";  // show emoji container
-    
-    // stuff them in a new, larger div
+    // hide the react button
+    document.getElementById("reactButton").style.display = "none";
+    // make a bunch of reaction emojis with background images 
+    document.getElementById("reactContainer").style.display = "block";
+    // and stuff them in a new, larger div
     var reacts = document.getElementsByClassName("react");
     for(let i = 0; i < reacts.length; i++) {
         reacts[i].style.display = "block";
     }
 }
-
 //calls closeReacts, will be used for API interfacing in the future
 function handleReact(reactType) {
     var data = {
@@ -68,35 +67,35 @@ function handleReact(reactType) {
 // selected reaction, if applicable
 function closeReacts(reactType) {
     if (reactType != "no-select") {
-        react                  = document.getElementById("reactButton")
+        react = document.getElementById("reactButton")
         react.style.background = "none";
-        react.style.cursor     = "pointer";
-        
-        span                   = document.getElementById("selectedEmotion");
-        span.innerHTML         = htmlify(reactType);
-        span.style.fontSize    = "30px";
+        react.style.cursor = "pointer";
+        span = document.getElementById("selectedEmotion");
+        span.innerHTML = htmlify(reactType);
+        span.style.fontSize = "30px";
+        //react.background.style.display = "none";
     } 
-    
-    document.getElementById("reactContainer").style.display = "none";  // hide react container
-    document.getElementById("reactButton").style.display    = "block"; //show button with new background
+    // hide the react container
+    document.getElementById("reactContainer").style.display = "none";
+    //show the react button with the new background
+    document.getElementById("reactButton").style.display = "block";
 
     var reacts = document.getElementsByClassName("react");
     for(let i = 0; i < reacts.length; i++) {
         reacts[i].style.display = "none";
     }
 }
-
 //add divs to dom
-var reactButton = document.getElementById( 'div' );
+var reactButton = document.createElement( 'div' );
 reactButton.setAttribute("id", "reactButton");
 reactButton.style.background = "url(" + chrome.extension.getURL("images/badPrismLogo.png") + ")";
-
-var span = document.createElement('span');
+reactButton.cursor = "pointer";
+span = document.createElement('span');
 span.setAttribute("id", "selectedEmotion");
 reactButton.appendChild(span);
 reactButton.onclick = function(){openReacts()};
 
-var reactContainer = document.getElementById( 'div' );
+var reactContainer = document.createElement( 'div' );
 reactContainer.setAttribute("id","reactContainer");
 reactContainer.style.display = "none";
 reactContainer.onclick = function(){closeReacts("no-select")};
