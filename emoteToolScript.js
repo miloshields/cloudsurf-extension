@@ -9,35 +9,38 @@ function htmlify(reactType){
     return "&#" + typeToPath[reactType] + ";"
 }
 
+function getElem(varname){
+    return document.getElementById(varname);
+}
+
 //create a button reaction using the image path (a png)
 // and the coordinates from the bottom left
 function makeReact(reactType, left, bottom, size) {
     react = document.createElement('div');
     react.setAttribute("class","react");
-    react.style.left = left + "px";
-    react.style.bottom = bottom + "px";
-    react.style.width = size + "px";
-    react.style.height = size + "px";
-    let emoji  = document.createElement('span');
-    emoji.innerHTML = htmlify(reactType);
+    react.style.left     = left + "px";
+    react.style.bottom   = bottom + "px";
+    react.style.cursor   = "pointer";
+    let emoji            = document.createElement('span');
+    emoji.innerHTML      = htmlify(reactType);
+    emoji.style.fontSize = "25px";
     react.appendChild(emoji);  
-    //var path = chrome.extension.getURL("" + typeToPath[reactType]);
-    //react.style.background = "url(" + path + ")";
-    react.onclick = function(){handleReact(reactType)};
+    react.onclick        = function(){handleReact(reactType)};
     document.body.append(react);
 }
 //hide the small button, open the div of reactions
 function openReacts() {
-    // hide the react button
-    document.getElementById("reactButton").style.display = "none";
-    // make a bunch of reaction emojis with background images 
-    document.getElementById("reactContainer").style.display = "block";
-    // and stuff them in a new, larger div
+    
+    getElem("reactButton").style.display = "none";      // hide button
+    getElem("reactContainer").style.display = "block";  // show emoji container
+    
+    // stuff them in a new, larger div
     var reacts = document.getElementsByClassName("react");
     for(let i = 0; i < reacts.length; i++) {
         reacts[i].style.display = "block";
     }
 }
+
 //calls closeReacts, will be used for API interfacing in the future
 function handleReact(reactType) {
     var data = {
@@ -69,33 +72,35 @@ function handleReact(reactType) {
 // selected reaction, if applicable
 function closeReacts(reactType) {
     if (reactType != "no-select") {
-        react = document.getElementById("reactButton")
+        react                  = getElem("reactButton")
         react.style.background = "none";
-        span = document.getElementById("selectedEmotion");
-        span.innerHTML = htmlify(reactType);
-        span.style.fontSize = "30px";
-        //react.background.style.display = "none";
+        react.style.cursor     = "pointer";
+        
+        span                   = getElem("selectedEmotion");
+        span.innerHTML         = htmlify(reactType);
+        span.style.fontSize    = "30px";
     } 
-    // hide the react container
-    document.getElementById("reactContainer").style.display = "none";
-    //show the react button with the new background
-    document.getElementById("reactButton").style.display = "block";
+    
+    getElem("reactContainer").style.display = "none";  // hide react container
+    getElem("reactButton").style.display    = "block"; //show button with new background
 
     var reacts = document.getElementsByClassName("react");
     for(let i = 0; i < reacts.length; i++) {
         reacts[i].style.display = "none";
     }
 }
+
 //add divs to dom
-var reactButton = document.createElement( 'div' );
+var reactButton = getElem( 'div' );
 reactButton.setAttribute("id", "reactButton");
 reactButton.style.background = "url(" + chrome.extension.getURL("images/badPrismLogo.png") + ")";
-span = document.createElement('span');
+
+var span = document.createElement('span');
 span.setAttribute("id", "selectedEmotion");
 reactButton.appendChild(span);
 reactButton.onclick = function(){openReacts()};
 
-var reactContainer = document.createElement( 'div' );
+var reactContainer = getElem( 'div' );
 reactContainer.setAttribute("id","reactContainer");
 reactContainer.style.display = "none";
 reactContainer.onclick = function(){closeReacts("no-select")};
@@ -105,5 +110,5 @@ document.body.appendChild(reactContainer);
 
 // set the possible reactions up with image paths and coordinates
 makeReact("laugh", 15, 70, 40);
-makeReact("love", 60, 70, 40);
+makeReact("love",  60, 70, 40);
 makeReact("like", 105, 70, 40);
