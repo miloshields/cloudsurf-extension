@@ -19,7 +19,7 @@ function makeReact(reactType, left, bottom, size) {
     react.style.cursor = "pointer";
     let emoji          = document.createElement('span');
     emoji.innerHTML    = htmlify(reactType);
-    emoji.style.fontSize = "25px;"
+    emoji.style.fontSize = "25px";
     react.appendChild(emoji);  
     react.onclick = function(){handleReact(reactType)};
     document.body.append(react);
