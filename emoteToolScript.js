@@ -39,9 +39,10 @@ function openReacts() {
 //calls closeReacts, will be used for API interfacing in the future
 function handleReact(reactType) {
     var data = {
-        type: reactType,
-        url: window.location.toString()
+        emotion: reactType,
+        url:     window.location.href
     };
+    console.log("href: " + window.location.href);
     var req = new XMLHttpRequest();
     req.open("POST","https://the-prism.herokuapp.com/react", true);
     req.setRequestHeader("Content-type","application/json");
