@@ -1,12 +1,29 @@
-//dictionary mapping reaction types to their corresponding image paths'
-var typeToPath = {
-    "like" : "128077", //"images/like.png",
-    "love" : "128151", //"images/love.png",
-    "laugh" : "129315" //images/laugh.png"
-};
+//dictionary mapping reaction types to their corresponding dec values
+// var typeToPath = {
+//     "angry" :  "128544",
+//     "crying":  "128546",
+//     "afraid":  "128552",
+//     "astonished": "128562",
+//     "smiling"  :  "128578", 
+//     "love"  :  "128525",
+//     "laugh" :  "128514",
+//     "chill" : "128526",
+//     "raisebrow": "129320"
+// };
+
+var emotions = [ "128544",
+                 "128546",
+                 "128552",
+                 "128562",
+                 "128578", 
+                 "128525",
+                 "128514",
+                 "128526",
+                 "129320",
+                ];
 
 function htmlify(reactType){
-    return "&#" + typeToPath[reactType] + ";"
+    return "&#" + reactType + ";"
 }
 
 //create a button reaction using the image path (a png)
@@ -42,7 +59,7 @@ function handleReact(reactType) {
         emotion: reactType,
         url:     window.location.href
     };
-    console.log("href: " + window.location.href);
+    console.log("data: ", data);
     var req = new XMLHttpRequest();
     req.open("POST","https://the-prism.herokuapp.com/react", true);
     req.setRequestHeader("Content-type","application/json");
@@ -105,6 +122,8 @@ document.body.appendChild(reactButton);
 document.body.appendChild(reactContainer);
 
 // set the possible reactions up with image paths and coordinates
-makeReact("laugh", 15, 70, 40);
-makeReact("love",  60, 70, 40);
-makeReact("like", 105, 70, 40);
+for (const i of Array(3).keys() ){
+    for (const j of Array(3).keys()){
+        makeReact(emotions[j * 3 + i], 35 + i * 33 , 35 + j * 33, 40);
+    }
+}
