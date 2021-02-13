@@ -3,13 +3,20 @@
     position:            fixed;
     left:                10px;
     bottom:              10px;
-    width:               50px;
-    height:              50px;
-    border-radius:       50%;
+    width:               75px;
+    height:              75px;
+    border-radius:       20px;
     z-index:             99999;
     background-repeat:   no-repeat !important;
     background-position: center !important;
     background-size:     cover !important;
+    /* attempting to put the selected emotion span at the bottom */
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    cursor: pointer;
+    background: white;
+    filter: drop-shadow(0px 3px 4px #EAAC8B) drop-shadow(0px 3px 4px #355070);
 }
 /* the container containing all of the available reactions */
 #reactContainer{
@@ -18,9 +25,12 @@
     bottom:              10px;
     height:              150px;
     width:               150px;
-    border-radius:       50%;
-    background:          radial-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4));
-    backdrop-filter:     blur(3px);
+    border-radius:       20px;
+    /* card styling (glass is commented out */
+    background: white;
+    filter: drop-shadow(0px 3px 4px #EAAC8B) drop-shadow(0px 3px 4px #355070);
+    /* background:          radial-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4));
+    backdrop-filter:     blur(3px); */
     z-index:             99999;
 }
 .react{
