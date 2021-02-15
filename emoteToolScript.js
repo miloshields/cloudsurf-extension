@@ -40,7 +40,7 @@ function makeReact(reactType, left, bottom, size) {
     let emoji          = document.createElement('div');
     emoji.setAttribute("class","reactText")
     emoji.innerHTML    = htmlify(reactType);
-    emoji.style.fontSize = "25px";
+    // emoji.style.fontSize = "25px";
     react.appendChild(emoji);  
     react.onclick = function(){handleReact(reactType)};
     document.body.append(react);
@@ -54,7 +54,7 @@ function openReacts() {
     // and stuff them in a new, larger div
     var reacts = document.getElementsByClassName("react");
     for(let i = 0; i < reacts.length; i++) {
-        reacts[i].style.display = "block";
+        reacts[i].style.display = "flex";
     }
 }
 //calls closeReacts, will be used for API interfacing in the future
