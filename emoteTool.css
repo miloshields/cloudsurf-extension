@@ -42,13 +42,25 @@
     background-repeat:   no-repeat !important;
     background-position: center !important;
     background-size:     cover !important;
+    height: 30px;
+}
+.react:hover{
+    background-color: rgb(99, 99, 99);
+}
+.reactText{
+    z-index:             100001;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: auto;
 }
 #logoSVG{
-    width: 65px;
-    height: 56px;
-    left:0px;
-    right:0px;
-    top: 0px;
-    bottom: 0px;
-    margin:auto;
+    width:      65px;
+    height:     56px;
+    left:       0px;
+    right:      0px;
+    top:        0px;
+    bottom:     0px;
+    margin:     auto;
+    overflow:   visible;
 }
