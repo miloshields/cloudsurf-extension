@@ -13,6 +13,10 @@ function setLink(linkNum, url)
     linkElem = document.getElementById("link"+linknum);
     linkElem.setAttribute("href",url);
 }
+function setSurfDate(surfdate)
+{
+    document.getElementById("surfdate").innerHTML = surfdate;
+}
 function setRank(rank)
 {
     document.getElementById("rank").innerHTML = rank;
