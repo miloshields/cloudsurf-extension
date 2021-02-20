@@ -132,6 +132,6 @@ document.body.appendChild(reactContainer);
 // set the possible reactions up with image paths and coordinates
 for (const i of Array(3).keys() ){
     for (const j of Array(3).keys()){
-        makeReact(emotions[j * 3 + i], 35 + i * 33 , 40 + j * 33, 40);
+        makeReact(emotions[j * 3 + i], 35 + i * 33 , 37 + j * 33, 40);
     }
 }

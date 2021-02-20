@@ -1,31 +1,49 @@
-#profilePic{
-    height: 80px;
-    width: 100px;
-}
+
 body{
-    width: 400px;
-    height: 210px;
+    width: 536px;
+    height: 304px;
 }
 #header{
     display: flex;
+    z-index: 2;
+    height: 150px;
+}
+#backgroundBox{
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#headCloud{
+    position: absolute;
+    left: 40px;
+    top: 0px;
+    z-index: 0;
 }
 #welcomeContain{
-    padding-left: 30px;
-    padding-top: 10px;
+    z-index: 2;
+    width: 50%;
+    height: inherit;
+    display: flex;
 }
 #welcome{
-    font-size: 1.5em;
-    font-weight: 600;
-    margin-bottom: 10px;
+    margin: auto;
+    color: black;
+    font-size: 25px;
+}
+#user{
+    width: 50%;
+    height: inherit;
 }
 #message{
     font-size: 1.25em;
 }
-#info{
+#lower{
+    color: white;
     margin: auto;
     margin-top: 5px;
     vertical-align: center;
-    width: 400px;
+    width: 450px;
     height: 120px;
     display: flex;
     flex-direction: column;
@@ -74,65 +92,12 @@ body{
     font-weight: 700;
 }
 a{
-    color: black;
+    color: white;
     font-weight: 700;
 }
 
-#Front-triangle{
-    animation: frontShift 7s;
-    animation-iteration-count: infinite;
-}
-#Back-triangle{
-    animation: backShift 7s;
-    animation-iteration-count: infinite;
-}
-#Connectors{
-    animation: connectShrink 7s;
-    animation-iteration-count: infinite;
-}
-
-@keyframes frontShift{
-    0% {
-        transform: translate3d(0px, 0px, 0px);
-        animation-timing-function: linear;
-    }
-    50% {
-        transform: translate3d(-30px, -30px, 0px);
-        animation-timing-function: linear;
-    }
-    100% {
-        transform: translate3d(0px, 0px, 0px);
-    }
-}
-@keyframes backShift{
-    0% {
-        transform: translate3d(0px, 0px, 0px);
-        animation-timing-function: linear;
-    }
-    50% {
-        transform: translate3d(30px, 30px, 0px);
-        animation-timing-function: linear;
-    }
-    100% {
-        transform: translate3d(0px, 0px, 0px);
-    }
-}
-@keyframes connectShrink{
-    0% {
-        transform-origin: 50% 50%;
-        transform: rotate(0deg);
-        animation-timing-function: linear;
-    }
-    100% {
-        transform-origin: 50% 50%;
-        transform: rotate(360deg);
-        animation-timing-function: linear;
-    }
-}
 
 svg{
     display:block;
-    margin: auto;
-    padding-top: 10px;
     overflow: visible;
 }
