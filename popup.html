@@ -2,11 +2,49 @@
 <html>
     <head>    
         <link rel="stylesheet" type="text/css" href="popup.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&family=Work+Sans&display=swap" rel="stylesheet">
     </head>
     <body>
-        
-        
-        <svg id = "backgroundBox" viewBox="0 0 1072 622" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <section id = "containAll">
+            <section id = "top">
+                <section id = "topleft">
+                    <div id = "welcome">Welcome back!</div>
+                </section>
+                <section id = "topright">
+                    <div class = "statHeader forUser"><span id="name">Explorer</span></div>
+                    <div class = "keyToValSection">
+                        <div class = "key">surfing since</div>
+                        <div id = "surfdate" class = "value">2.15.2021</div>
+                    </div>
+                    <div class = "keyToValSection">
+                        <div class = "key">discovery points</div>
+                        <div id = "dpoints" class = "value">1793</div>
+                    </div>
+                    <div class = "keyToValSection">
+                        <div class = "key">cloudsurf rank</div>
+                        <div id = "rank" class = "value">Platinum III</div>
+                    </div>  
+                </section>
+            </section>
+            <section id = "bottom">
+                <section id = "botleft">
+                    <div class = "statHeader">Your Recent Regions:</div>
+                    <div class = "statItem" id = "region1">News</div>
+                    <div class = "statItem" id = "region2">Computer Science</div>
+                    <div class = "statItem" id = "region3">Psychology</div>
+                </section>
+                <section id = "botright">
+                    <div class = "statHeader">More Stuff:</div>
+                    <div class = "statItem"><a id = "link1" href = "google.com">Your Discoveries</a></div>
+                    <div class = "statItem"><a id = "link2" href = "google.com">Suggested Areas</a></div>
+                    <div class = "statItem"><a id = "link3" href = "google.com">Suggested Explorers</a></div> 
+                </section>
+            </section>
+        </section>
+        <svg id = "background" viewBox="0 0 1072 622" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="1072" height="622" fill="white"/>
             <rect width="1072" height="622" fill="url(#paint0_linear)"/>
             <rect x="30" y="35" width="1012" height="551" fill="black" fill-opacity="0.42"/>
@@ -19,29 +57,19 @@
             </linearGradient>
             </defs>
         </svg>
+        <svg id = "cloud" viewBox="0 0 371 223" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M320.066 83.4952H320.037C320.037 83.3087 320.066 83.1223 320.066 82.9359C320.066 57.5011 297.37 36.8604 269.337 36.8604C265.731 36.8604 262.212 37.2066 258.84 37.8724C248.782 15.6603 224.766 0 196.675 0C175.592 0 156.796 8.84223 144.48 22.6382C136.304 18.8617 127.262 16.8907 118.089 16.8855C87.7402 16.8855 62.8156 37.8724 59.9127 64.7454C26.9243 66.3434 0.445655 90.8992 0.00581025 121.394C-0.463357 153.141 27.5401 179.242 62.4931 179.641C65.2201 179.668 67.8592 179.508 70.4983 179.215C84.0161 205.102 113.017 223 146.65 223C166.942 223 185.532 216.475 200.076 205.635C211.19 213.119 224.913 217.593 239.809 217.593C270.364 217.593 296.08 198.977 304.085 173.542C309.129 175.06 314.495 175.912 320.095 175.912C348.187 175.912 370.971 155.218 370.971 129.704C370.941 104.189 348.187 83.4952 320.066 83.4952V83.4952Z" fill="white"/>
+            <path d="M349.975 92.311C361.499 102.884 353.348 127.121 345.43 135.031C329.831 150.558 301.211 146.936 289.717 144.699C286.608 144.086 286.11 144.299 285.084 144.858C284.175 145.364 283.764 146.163 282.767 148.054C279.072 155.299 269.513 169.334 249.339 174.981C228.314 180.866 208.492 171.891 199.226 166.538C195.707 164.514 195.561 164.46 193.977 164.487C192.364 164.514 190.781 165.579 188.875 166.937C180.489 172.93 161.341 183.503 131.813 181.958C102.871 180.44 86.3033 164.247 80.6146 155.911C79.5296 154.313 78.3567 152.981 77.0079 152.848C75.4538 152.715 73.7237 154.153 72.4335 155.325C60.1178 166.218 21.3529 169.494 8.5094 150.931C21.5874 169.973 41.791 179.402 62.5223 179.641C65.2494 179.668 67.8884 179.508 70.5275 179.215C84.0454 205.103 113.046 223 146.679 223C166.971 223 185.562 216.475 200.106 205.635C211.219 213.119 224.942 217.594 239.838 217.594C270.393 217.594 296.109 198.977 304.114 173.542C309.158 175.06 314.524 175.913 320.125 175.913C348.216 175.913 371 155.219 371 129.704C370.941 116.121 363.435 100.78 349.975 92.311V92.311Z" fill="#7E98A8"/>
+        </svg>
+         <!--
         <section id = "header">        
-            <svg id ="headCloud" width = "220" height="180" viewBox="0 0 371 223" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M320.066 83.4952H320.037C320.037 83.3087 320.066 83.1223 320.066 82.9359C320.066 57.5011 297.37 36.8604 269.337 36.8604C265.731 36.8604 262.212 37.2066 258.84 37.8724C248.782 15.6603 224.766 0 196.675 0C175.592 0 156.796 8.84223 144.48 22.6382C136.304 18.8617 127.262 16.8907 118.089 16.8855C87.7402 16.8855 62.8156 37.8724 59.9127 64.7454C26.9243 66.3434 0.445655 90.8992 0.00581025 121.394C-0.463357 153.141 27.5401 179.242 62.4931 179.641C65.2201 179.668 67.8592 179.508 70.4983 179.215C84.0161 205.102 113.017 223 146.65 223C166.942 223 185.532 216.475 200.076 205.635C211.19 213.119 224.913 217.593 239.809 217.593C270.364 217.593 296.08 198.977 304.085 173.542C309.129 175.06 314.495 175.912 320.095 175.912C348.187 175.912 370.971 155.218 370.971 129.704C370.941 104.189 348.187 83.4952 320.066 83.4952V83.4952Z" fill="white"/>
-                <path d="M349.975 92.311C361.499 102.884 353.348 127.121 345.43 135.031C329.831 150.558 301.211 146.936 289.717 144.699C286.608 144.086 286.11 144.299 285.084 144.858C284.175 145.364 283.764 146.163 282.767 148.054C279.072 155.299 269.513 169.334 249.339 174.981C228.314 180.866 208.492 171.891 199.226 166.538C195.707 164.514 195.561 164.46 193.977 164.487C192.364 164.514 190.781 165.579 188.875 166.937C180.489 172.93 161.341 183.503 131.813 181.958C102.871 180.44 86.3033 164.247 80.6146 155.911C79.5296 154.313 78.3567 152.981 77.0079 152.848C75.4538 152.715 73.7237 154.153 72.4335 155.325C60.1178 166.218 21.3529 169.494 8.5094 150.931C21.5874 169.973 41.791 179.402 62.5223 179.641C65.2494 179.668 67.8884 179.508 70.5275 179.215C84.0454 205.103 113.046 223 146.679 223C166.971 223 185.562 216.475 200.106 205.635C211.219 213.119 224.942 217.594 239.838 217.594C270.393 217.594 296.109 198.977 304.114 173.542C309.158 175.06 314.524 175.913 320.125 175.913C348.216 175.913 371 155.219 371 129.704C370.941 116.121 363.435 100.78 349.975 92.311V92.311Z" fill="#7E98A8"/>
-            </svg>
+            
             <div id = "welcomeContain">
                 <div id = "welcome">Welcome back!</div>
             </div>
             <section id = "userContain">
                 <section id = "user">
-                    <div class = "statHeader forUser"><span id="name">Explorer</span></div>
-                    <div class = "keyToValSection">
-                        <div class = "key">surfing since</div>
-                        <div class = "value statItem surfdate">2.15.2021</div>
-                    </div>
-                    <div class = "keyToValSection">
-                        <div class = "key">discovery points</div>
-                        <div class = "value statItem dpoints">1793</div>
-                    </div>
-                    <div class = "keyToValSection">
-                        <div class = "key">cloudsurf rank</div>
-                        <div class = "value statItem rank">Platinum III</div>
-                    </div>  
+                    
                 </section>
             </section>
         </section> 
@@ -60,7 +88,7 @@
                     <div class = "statItem"><a id = "link3" href = "google.com">Suggested Explorers</a></div> 
                 </section>
             </section>
-        </section> 
+        </section>--> 
         <script src="popup.js"></script>
     </body>
 </html>
