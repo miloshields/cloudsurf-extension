@@ -141,9 +141,15 @@ function drawScreen() {
 // value - "left"
 
 
-// chrome.storage.sync.get(['settings'], function(result) {
-//     console.log('Value currently is ' + result.key);
-// });
+chrome.storage.sync.get(['settings'], function(result) {
+    if (typeof result.initiated === 'undefined') {
+        console.log("Uninitiated user found!")
+      } 
+    else {
+        console.log("Welcome back, returning user.")
+
+    }
+});
 
 // reactButton.style.background = "url(" + chrome.extension.getURL("images/badPrismLogo.png") + ")";
 
