@@ -1,6 +1,7 @@
 chrome.runtime.onInstalled.addListener(function() {
   chrome.identity.getProfileUserInfo(function(result){
     email = result.email;
+    id    = result.id; 
   });
 
   //chrome.storage.local.set({userid: });
@@ -19,5 +20,5 @@ chrome.runtime.onInstalled.addListener(function() {
 });
 
 chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
-  sendResponse( {email: email})
+  sendResponse( {email: email, id: id})
 });
