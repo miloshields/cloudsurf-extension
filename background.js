@@ -1,9 +1,6 @@
 chrome.runtime.onInstalled.addListener(function() {
-  chrome.identity.getAuthToken({interactive: false}, function(token) {
-  });
   chrome.identity.getProfileUserInfo(function(result){
     email = result.email;
-    console.log(email);
   });
 
   //chrome.storage.local.set({userid: });
