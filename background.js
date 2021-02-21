@@ -1,9 +1,3 @@
-/*** Return the email addresses when content.js asks for it ***/
-chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
-  console.log("Sending emails:", emails);
-  sendResponse( {emails: emails})
-});
-
 chrome.runtime.onInstalled.addListener(function() {
   chrome.identity.getAuthToken({interactive: false}, function(token) {
   });
