@@ -28,7 +28,7 @@
     border-radius:       20px;
     /* card styling (glass is commented out */
     background: white;
-    filter: drop-shadow(0px 3px 4px #EAAC8B) drop-shadow(0px 3px 4px #355070);
+    filter: drop-shadow(0px 3px 4px #000000) ;
     /* background:          radial-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4));
     backdrop-filter:     blur(3px); */
     z-index:             99999;
