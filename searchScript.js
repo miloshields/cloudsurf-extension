@@ -6,6 +6,7 @@ var resultDivs = [...document.getElementsByClassName("g")]; //convert to array
 
 // takes the div containing a search result link and scrapes the url
 function getLink(div) {
+    console.log("Checking div.")
     var children = div.children;
     var index = 0;
     for(let i = 0; i < children.length; i++) {
@@ -16,6 +17,9 @@ function getLink(div) {
     }
     children = children[index].children;
     for(let i = 0; i < children.length; i++) {
+        if(children[i].tagName === "LINK"){
+            return(children[i].getAttribute("href"))
+        }
         if(children[i].tagName === "a"){
             return;
         }
@@ -30,7 +34,6 @@ function getLink(div) {
             return(children[i].getAttribute("href"));
         }
     }
-
 }
 
 
