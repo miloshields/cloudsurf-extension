@@ -89,7 +89,7 @@ function handleReact(reactType) {
 // selected reaction, if applicable
 function closeReacts(reactType) {
     if (reactType != "no-select") {
-        document.getElementById("logoSVG").style.display = "none";
+        // document.getElementById("logoSVG").style.display = "none";
         react = document.getElementById("reactButton")
         react.style.background = "none";
         react.style.cursor = "pointer";
@@ -110,24 +110,46 @@ function closeReacts(reactType) {
         reacts[i].style.display = "none";
     }
 }
-//add divs to dom
-var reactButton = document.createElement( 'div' );
-reactButton.setAttribute("id", "reactButton");
-reactButton.innerHTML = logoString;
+
+function drawScreen() {
+    // reaction button
+    var reactButton = document.createElement( 'div' );
+    reactButton.setAttribute("id", "reactButton");
+    reactButton.innerHTML = logoString;
+    reactButton.cursor = "pointer";
+    //chosen emotion will inherit dom location from button
+    span = document.createElement('span');
+    span.setAttribute("id", "selectedEmotion");
+    reactButton.appendChild(span);
+    reactButton.onclick = function(){openReacts()};
+    
+    var reactContainer = document.createElement( 'div' );
+    reactContainer.setAttribute("id","reactContainer");
+    reactContainer.style.display = "none";
+    reactContainer.onclick = function(){closeReacts("no-select")};
+
+    document.body.appendChild(reactButton);
+    document.body.appendChild(reactContainer);
+}
+
+// ideally, there are two things we get from localstorage to place all three items.
+// we need to set default values for these things in localstorage 
+// the first are coordinates for the bottom left of all of these items
+// the second is some scale or size of each of these items
+
+// key - "settings"
+// value - "left"
+
+
+// chrome.storage.sync.get(['settings'], function(result) {
+//     console.log('Value currently is ' + result.key);
+// });
+
 // reactButton.style.background = "url(" + chrome.extension.getURL("images/badPrismLogo.png") + ")";
-reactButton.cursor = "pointer";
-span = document.createElement('span');
-span.setAttribute("id", "selectedEmotion");
-reactButton.appendChild(span);
-reactButton.onclick = function(){openReacts()};
 
-var reactContainer = document.createElement( 'div' );
-reactContainer.setAttribute("id","reactContainer");
-reactContainer.style.display = "none";
-reactContainer.onclick = function(){closeReacts("no-select")};
+drawScreen();
 
-document.body.appendChild(reactButton);
-document.body.appendChild(reactContainer);
+
 
 // set the possible reactions up with image paths and coordinates
 for (const i of Array(3).keys() ){
