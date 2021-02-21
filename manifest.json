@@ -2,7 +2,7 @@
     "name": "Cloudsurf Extension",
     "version": "0.0.3",
     "description": "Extending the browsing experience beyond the individual through site-based reactions.",
-    "permissions": ["activeTab","declarativeContent", "storage","tabs"],
+    "permissions": [ "activeTab","declarativeContent", "storage", "tabs", "identity", "identity.email" ],
     "background" : {
         "scripts": ["background.js"],
         "persistent": false
@@ -38,5 +38,10 @@
     "web_accessible_resources" : [
         "images/*.png"
     ],
-    "manifest_version": 2
+    "manifest_version": 2,
+    "key": "MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEA0Nf1+i8lm4uPJGni46UYCPv+HnR4/a3QUbcv4uIgVyLotLl6ov1BfNkW5BIPQcQU1FENIbVyJzCqv9t3EZdo3MQDggNg3jmfN5qz2POBAcIqrfFyvlKQ3JFevHfe882OCu2i42yJ2hAzH0JF24g1CHAXfjjyIP8wYM98NMHedSBgbWgq/AwWYruKqk7Ke4njc/XHtDzEqFn1ThvMq9GgfP5PiTglnRGEHwoTW2RE65VohaKIMOyHmZzhWPRMpoC2VUs74NZut3ncb+jxlnGFmW5bd/BEUXM3P9Xy/IlICWN/RZJ2nln98KyoCpLtiPMLbl+QXFeSXSh+SZCfuwmhiw0WBqBJ0cUtcAYQNqo8WFe3vC84Q6OwkWAGzgabiA/jT4P6vX54rJOoVAPHIAH5qf3Msl1GtLZ6+3FnMAD9CUdkVzFEbdJRom0HUE7S9bpNfaZkXGGbP9tIn48V0PvXpd2Y6PV4XA4G5clUZ9gBhQyyybGh0hTGR0K7XvWYl2IDAgMBAAE=",
+    "oauth2":{
+        "client_id": "821898440770-se5ticapthsmcjjttl1mkkd0977mf6p0.apps.googleusercontent.com",
+        "scopes":["https://www.googleapis.com/auth/userinfo.email"]
+    }
 }

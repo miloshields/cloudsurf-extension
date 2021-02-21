@@ -1,3 +1,9 @@
+
+/*** Get the logged in user from the background.js script. ***/
+chrome.extension.sendMessage({}, function(response) {
+  console.log(response);
+});
+
 emotions =  ["_128544", "_128546","_128552","_128562",
             "_128578", "_128525", "_128514", "_128526", "_129320"];
 
