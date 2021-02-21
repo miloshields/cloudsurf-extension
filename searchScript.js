@@ -51,7 +51,7 @@ function makeEmojis(emojis, emojiArea) {
         num_emotes = emojis[i][1];
 
         if (num_emotes == 0){
-            emo_value = "129297";
+            break;
         }else{
             emo_value = emojis[i][0].substring(1);    //remove underscore.
         }
