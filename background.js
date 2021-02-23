@@ -1,7 +1,8 @@
 chrome.runtime.onInstalled.addListener(function() {
   chrome.identity.getProfileUserInfo(function(result){
-    email = result.email;
-    id    = result.id; 
+      chrome.storage.sync.set({ email: result.email,
+				id: result.id },
+			      function() {})
   });
 
   //chrome.storage.local.set({userid: });
@@ -19,6 +20,9 @@ chrome.runtime.onInstalled.addListener(function() {
   });
 });
 
-chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
-  sendResponse( {email: email, id: id})
+chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {    
+    chrome.storage.sync.get(['email', 'id'], function(result) {	
+	sendResponse(result)
+    })
+    return true // this is needed to keep message port open :/
 });

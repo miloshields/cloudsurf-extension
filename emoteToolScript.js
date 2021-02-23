@@ -3,6 +3,7 @@ var logoString = ' <svg width="75" height="75" viewBox="0 0 242 242" fill="none"
 
 var email, userid; 
 chrome.extension.sendMessage({}, function(response) {
+    console.log(response);
     email  = response.email; 
     userid = response.id;
 });
