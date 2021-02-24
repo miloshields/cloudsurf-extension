@@ -1,6 +1,6 @@
-# prism-extension
+# cloudsurf-extension
 
-This repo holds the code for an extension that Matt Russell and Milo Shields are building.
+This repo holds the code for a goole chrome extension that Matt Russell and Milo Shields are building.
 
 Vision: We plan to release this extension in combination with a web platform to allow users to:
           1. Mark pages on the internet with "reacts", and be able to access their own reacted pages easily and intuitively.
