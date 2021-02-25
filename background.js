@@ -1,28 +1,13 @@
+// on install, create a user profile with email and id and store it in chrome storage
 chrome.runtime.onInstalled.addListener(function() {
   chrome.identity.getProfileUserInfo(function(result){
-      chrome.storage.sync.set({ email: result.email,
+      chrome.storage.sync.set({ 
+        email: result.email,
 				id: result.id },
-			      function() {})
+			      function() {
+              console.log("Setting information.")
+              console.log("Set email to "+result.email);
+              console.log("Set ID to "+result.id);
+            })
   });
-
-  //chrome.storage.local.set({userid: });
-  chrome.storage.sync.set({color: '#3aa757'}, function() {
-    console.log('The color is green.');
-  });
-  chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
-    chrome.declarativeContent.onPageChanged.addRules([{
-      conditions: [new chrome.declarativeContent.PageStateMatcher({
-        pageUrl: {hostEquals: 'developer.chrome.com'},
-      })
-      ],
-      actions: [new chrome.declarativeContent.ShowPageAction()]
-    }]);
-  });
-});
-
-chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {    
-    chrome.storage.sync.get(['email', 'id'], function(result) {	
-	sendResponse(result)
-    })
-    return true // this is needed to keep message port open :/
 });
