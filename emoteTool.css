@@ -129,3 +129,6 @@
         transform: scale(1);
     }
 }
+svg{
+    overflow: visible;
+}
