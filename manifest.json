@@ -4,7 +4,7 @@
     "description": "Extending the browsing experience beyond the individual through site-based reactions.",
     "permissions": [ "activeTab","declarativeContent", "storage", "tabs", "identity", "identity.email" ],
     "background" : {
-        "scripts": ["background.js"],
+        "scripts": ["jquery.min.js","background.js"],
         "persistent": false
     },
     "content_scripts" : [

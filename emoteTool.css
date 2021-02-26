@@ -57,7 +57,7 @@
 .reactText{
     animation: deselectShrink .2s;
     animation-fill-mode: forwards;
-    z-index:             100000;
+    z-index:             200000;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -128,7 +128,4 @@
         transform-origin: 50% 50%;
         transform: scale(1);
     }
-}
-svg{
-    overflow: visible;
 }

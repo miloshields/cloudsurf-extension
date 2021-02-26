@@ -5,6 +5,7 @@ var clickCheck = function(e) {
     e = e || window.event;
     var target = e.target; 
     var count = 0;
+    console.log("target id: " ,target.getAttribute("id"));
     while (target.getAttribute("id") != "reactContainer" &&  target.getAttribute("id") != "reactButton" && target.parentElement != null) {
         console.log(target.getAttribute("id"));
         target = target.parentElement;
@@ -29,13 +30,6 @@ function stopListening(){
 }
 
 
-// function refreshListeners()
-// {
-//     var elems = getElementsByClassName("reactText");
-//     for (elem in elems) {
-//         elem.addEventListener(onclick, myFunction);
-//     }
-// }
 // getting user identifiers
 var email, userid; 
 chrome.storage.sync.get(['email', 'id'], function(result) {	
@@ -102,13 +96,13 @@ function makeReactButton(size, x, y)
     var reactButton = document.createElement( 'div' );
     reactButton.setAttribute("id", "reactButton");
     reactButton.innerHTML    = logoString;
-    reactButton.onclick = openReacts;
-    console.log("Apparently I just added the onclick event.");
+    reactButton.onclick      = openReacts;
+    
     //set user-specified attributers
-    reactButton.style.width  = size+"rem";
-    reactButton.style.height = size+"rem";
-    reactButton.style.left   = x+"%";
-    reactButton.style.bottom = y+"%";
+    reactButton.style.width  = size + "rem";
+    reactButton.style.height = size + "rem";
+    reactButton.style.left   = x + "%";
+    reactButton.style.bottom = y + "%";
     
     return reactButton;
 }
@@ -146,27 +140,14 @@ function makeReacts(align, size, x, y, emoticons, rows, cols)
     for (emote in emoticons) {
         let react = document.createElement("div");
         react.innerHTML = htmlify(emoticons[emote])
-        react.setAttribute("id",emoticons[emote]);
-        react.style.fontSize = (size/3)+"rem";
-        react.onclick = function(){handleReact(emoticons[emote])};
+        react.setAttribute("id", emoticons[emote]);
+        react.style.fontSize = (size / 3) + "rem";
+        react.onclick = function(e){ handleReact(e.target.getAttribute("id")); };
         reactContainer.appendChild(react).className = "grid-item reactText"
     }
     return reactContainer;
 }
 
-// handles a click on the reactButton
-// const handleClick = (e) => 
-// {
-//     openReacts();
-
-//     const close = (evt) => {       
-//         if (e !== evt) {
-//             closeReacts()
-//             document.removeEventListener('click', close)
-//         }
-//     }
-//     document.addEventListener('click', close)
-// }
 // openReacts
 // purpose: allow user to react to the page, TODO should set an onclick
 //          to close for the rest of the body
@@ -186,7 +167,7 @@ drawScreen("left", 5, 1, 1, emotions, 3, 3);
 function handleReact(reactType) 
 {
     // update the value of the react button
-    document.getElementById('reactButton').style.reactType = reactType  
+   // document.getElementById('reactButton').style.reactType = reactType  
 
     var data = {
         emotion: reactType,
