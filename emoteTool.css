@@ -129,3 +129,8 @@
         transform: scale(1);
     }
 }
+
+/* SVG styling */
+#buttonSVG{
+    overflow: visible !important;
+}
