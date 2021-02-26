@@ -3,8 +3,8 @@
     position:            fixed;
     left:                10px;
     bottom:              10px;
-    width:               75px;
-    height:              75px;
+    width:               5rem;
+    height:              5rem;
     border-radius:       20px;
     z-index:             99999;
     background-repeat:   no-repeat !important;
@@ -20,30 +20,33 @@
 }
 /* the container containing all of the available reactions */
 #reactContainer{
+    display: none;
+
     position:            fixed;
-    left:                10px;
-    bottom:              10px;
-    height:              150px;
-    width:               150px;
     border-radius:       20px;
     /* card styling (glass is commented out */
     background: white;
     filter: drop-shadow(0px 3px 4px #000000) ;
+
     /* background:          radial-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4));
     backdrop-filter:     blur(3px); */
     z-index:             99999;
+    grid-gap: .2rem;
+    grid-template-rows: repeat(var(--grid-rows), 1fr);
+    grid-template-columns: repeat(var(--grid-cols), 1fr);
+    padding: .2rem;
 }
-.react{
-    display:             none;
-    position:            fixed;
-    /*border:              1px solid black;
-    border-radius:       50%;*/
-    z-index:             100000;
-    background-repeat:   no-repeat !important;
-    background-position: center !important;
-    background-size:     cover !important;
-    height: 30px;
-}
+:root {
+    --grid-cols: 1;
+    --grid-rows: 1;
+  }
+  
+  
+  .grid-item {
+    padding: .2rem;
+    text-align: center;
+    cursor:              pointer;
+  }
 .reactText:hover{
     animation: selectGrow .2s;
     animation-fill-mode: forwards;
@@ -53,8 +56,10 @@
     animation: deselectShrink .2s;
     animation-fill-mode: forwards;
     z-index:             100000;
-    font-size: 25px;
-    height: 34.34px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 /* Setting animations for when user hovers over the react animation */
 #reactButton:hover #Triangle{
@@ -82,17 +87,6 @@
     animation-fill-mode: forwards;
 }
 
-
-#logoSVG{
-    width:      65px;
-    height:     56px;
-    left:       0px;
-    right:      0px;
-    top:        0px;
-    bottom:     0px;
-    margin:     auto;
-    overflow:   visible;
-}
 @keyframes selectGrow{
     0% {
         transform-origin: 50% 50%;
