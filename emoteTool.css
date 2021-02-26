@@ -17,6 +17,8 @@
     cursor: pointer;
     background: white;
     filter: drop-shadow(0px 3px 4px #000000) ;
+    
+    --react-type: "none";
 }
 /* the container containing all of the available reactions */
 #reactContainer{
@@ -35,18 +37,18 @@
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-cols), 1fr);
     padding: .2rem;
+    
 }
 :root {
     --grid-cols: 1;
     --grid-rows: 1;
-  }
+}
   
-  
-  .grid-item {
-    padding: .2rem;
+.grid-item {
+    padding:    .2rem;
     text-align: center;
-    cursor:              pointer;
-  }
+    cursor:     pointer;
+}
 .reactText:hover{
     animation: selectGrow .2s;
     animation-fill-mode: forwards;

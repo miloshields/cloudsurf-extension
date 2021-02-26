@@ -48,9 +48,10 @@ function drawScreen(align, size, x, y, emoticons, rows, cols)
     reactButton  = makeReactButton(size, x, y);
     reactContain = makeReacts(align, size, x, y, emoticons, rows, cols)
 
-
     document.body.append(reactContain);
     document.body.append(reactButton);
+
+    document.getElementById('reactButton').addEventListener('click', handleClick);
 }
 
 // function makeReactButton
@@ -75,8 +76,6 @@ function makeReactButton(size, x, y)
     reactButton.style.left   = x+"%";
     reactButton.style.bottom = y+"%";
     
-    reactButton.onclick = function(){openReacts()};
-
     return reactButton;
 }
 
@@ -101,7 +100,7 @@ function makeReactButton(size, x, y)
 //                  rows and columns that their array of emotions has
 function makeReacts(align, size, x, y, emoticons, rows, cols)
 {
-    //make container to hold reactions
+    // make container to hold reactions
     var reactContainer = document.createElement( 'div' );
     reactContainer.setAttribute("id", "reactContainer");
     reactContainer.style.bottom = x+"%";
@@ -120,6 +119,20 @@ function makeReacts(align, size, x, y, emoticons, rows, cols)
     return reactContainer;
 }
 
+// handles a click on the reactButton
+const handleClick = (e) => 
+{
+    openReacts();
+
+    const close = (evt) => {       
+        if (e !== evt) {
+            closeReacts()
+            document.removeEventListener('click', close)
+        }
+    }
+    document.addEventListener('click', close)
+}
+
 // openReacts
 // purpose: allow user to react to the page, TODO should set an onclick
 //          to close for the rest of the body
@@ -127,59 +140,52 @@ function openReacts()
 {
     document.getElementById("reactButton").style.display    = "none";
     document.getElementById("reactContainer").style.display = "grid";
-    // document.body.onclick = function(){closeReacts("no-select")};
-    // console.log("Opening reacts?")
 }
 
 
 //just actually calling drawScreen
 drawScreen("left", 5, 1, 1, emotions, 3, 3);
 
-//handle the reaction made by the user, sending info to server
-//  call closereacts with the correct reaction type
-function handleReact(reactType) {
+//handle the reaction made by the user
+function handleReact(reactType) 
+{
+    // update the value of the react button
+    document.getElementById('reactButton').style.reactType = reactType  
+
     var data = {
         emotion: reactType,
         url:     window.location.href,
         userid:  userid
     };
-    console.log("data: ", data);
+    console.log("data: ", data)
     var req = new XMLHttpRequest();
     req.open("POST","https://the-prism.herokuapp.com/react", true);
     req.setRequestHeader("Content-type","application/json");
     req.onload = function (e) {
         if (req.readystate === 4) {
             if (req.status === 200) {
-                console.log(req.responseText);
+                console.log(req.responseText)
             }
             else{
-                console.error(req.statusText);
+                console.error(req.statusText)
             }
         }
     }
     req.onerror = function (e) {
-        console.error(req.statusText);
+        console.error(req.statusText)
     };
-    req.send(JSON.stringify(data));
-    //close the react, setting the new background for the react button
-    // to be the selected reaction
-    closeReacts(reactType);
+    req.send(JSON.stringify(data))
 }
 
-
-
-// //close the set of reactions, replace smaller button with
-// // selected reaction, if applicable
+// close the set of reactions
+// replace smaller button with selected reaction, if applicable
 function closeReacts(reactType) {
-    if (reactType != "no-select") {
-        react = document.getElementById("reactButton")
-        //react.background.style.display = "none";
-    } 
-    else{
-        //TODO remove the closereacts event listener from the body
-    }
+    
+    react = document.getElementById("reactButton")
+    
     // hide the react container
     document.getElementById("reactContainer").style.display = "none";
+    
     //show the react button with the new background
     document.getElementById("reactButton").style.display = "flex";
 }
