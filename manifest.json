@@ -1,7 +1,7 @@
 {
-    "name": "Cloudsurf Extension",
+    "name": "Cloudsurfer",
     "version": "0.0.3",
-    "description": "Extending the browsing experience beyond the individual through site-based reactions.",
+    "description": "Extending the browsing experience beyond the individual through website-based reactions.",
     "permissions": [ "activeTab","declarativeContent", "storage", "tabs", "identity", "identity.email" ],
     "background" : {
         "scripts": ["jquery.min.js","background.js"],

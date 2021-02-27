@@ -11,3 +11,20 @@ chrome.runtime.onInstalled.addListener(function() {
             })
   });
 });
+
+// // TODO send message to content script
+// chrome.tabs.onUpdated.addListener(function
+//   (tabId, changeInfo, tab) {
+//     // read changeInfo data and do something with it (like read the url)
+//     if (changeInfo.url) {
+//       console.log(changeInfo.url)
+//       // do something here
+//       chrome.tabs.query({active: true}, function(tabs){  		  
+//         chrome.tabs.sendMessage(tab.id, {url: changeInfo.url}, function(response) 
+//         { 			
+//           return true;
+//         }); 		
+//       });
+//     }
+//   }
+// );
