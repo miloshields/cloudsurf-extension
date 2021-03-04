@@ -45,12 +45,18 @@ chrome.runtime.onMessage.addListener(
     }
   );
 
-// getting user identifiers
-var email, userid; 
-chrome.storage.sync.get(['email', 'id'], function(result) {	
+// getting user identifiers and settings
+var email, userid, rows, cols, size;
+chrome.storage.sync.get(['email', 'id','rows','cols','size'], function(result) {	
     email  = result.email;
     userid = result.id;
+    rows   = result.rows;
+    cols   = result.cols;
+    size   = result.size;
+    //just actually calling drawScreen
+    drawScreen("left", size, 1, 1, emotions, rows, cols);
 });
+
 
 //unicodes corresponding to emoticons
 var emotions = [ 
@@ -115,6 +121,7 @@ function makeReactButton(size, x, y)
     reactButton.onclick      = openReacts;
     
     //set user-specified attributers
+    console.log("Size right here is "+size);
     reactButton.style.width  = size + "rem";
     reactButton.style.height = size + "rem";
     reactButton.style.left   = x + "%";
@@ -207,8 +214,7 @@ function openReacts()
 }
 
 
-//just actually calling drawScreen
-drawScreen("left", 8, 1, 1, emotions, 3, 3);
+
 
 //handle the reaction made by the user
 function handleReact(reactType) 

@@ -1,5 +1,0 @@
-import sys
-import subprocess.run 
-
-if len(sys.argv) > 1 and sys.argv[1] == '-v':
-    print(sys.argv[1])

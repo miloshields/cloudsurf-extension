@@ -1,0 +1,28 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+
+.optionsContain{
+    top:0;
+    right:0;
+    left:0;
+    bottom:0;
+    margin: auto;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.setting{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1rem;
+}
+
+input{
+    height: 1rem;
+}

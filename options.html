@@ -1,26 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
-            button {
-                height: 30px;
-                width: 30px;
-                outline: none;
-                margin: 10px;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="options.css">
     </head>
     <body>
-        <div id="buttonDiv">
+        <div class="optionsContain">
+            <div class="setting">Set number of rows:    <input type="text" id="rows"></div>
+            <div class="setting">Set number of columns: <input type="text" id="cols"></div>
+            <div class="setting">Set relative size (default is 8) <input type="text" id="size"></div>
+            <button id="submitChanges">Change Settings</button>
         </div>
-        <div>
-            <p>
-                Choose a different background color!
-            </p>
-        </div>
+        
     </body>
     <script src="options.js"></script>
     
-    <script type="module" src="three_prism.js"></script>
+    <!-- <script type="module" src="three_prism.js"></script> -->
          
 </html>

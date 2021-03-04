@@ -3,7 +3,11 @@ chrome.runtime.onInstalled.addListener(function() {
   chrome.identity.getProfileUserInfo(function(result){
       chrome.storage.sync.set({ 
         email: result.email,
-				id: result.id },
+				id: result.id,
+        size: 6,
+        rows: 3,
+        cols: 3,
+           },
 			      function() {
               console.log("Setting information.")
               console.log("Set email to "+result.email);
