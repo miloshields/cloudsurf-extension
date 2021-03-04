@@ -24,6 +24,20 @@ var emotions = [
 
 //----------------DOM RENDERING-------------------
 
+
+// getting user identifiers and settings
+var email, userid, rows, cols, size;
+chrome.storage.sync.get(['email', 'id','rows','cols','size'], function(result) {	
+    email  = result.email;
+    userid = result.id;
+    rows   = result.rows;
+    cols   = result.cols;
+    size   = result.size;
+    //just actually calling drawScreen
+    drawScreen("left", size, 1, 1, emotions, rows, cols);
+});
+
+
 // --------with extensions, we can't just write
 // --------HTML files, so we have to do it
 // --------ourselves. TODO implement "align" functionality
