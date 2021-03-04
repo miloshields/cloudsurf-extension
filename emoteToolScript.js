@@ -190,7 +190,9 @@ function getUserReact(url, userid) {
         console.log("Request loaded.")
         console.log(req.responseText);
         response = JSON.parse(req.responseText);  
-        setSelectedReact(response["reaction"])
+        if(response["reaction"] != "None") {
+            setSelectedReact(response["reaction"])
+        }
         if (req.readystate === 4) {
             console.log("Ready state is 4.")
             if (req.status === 200) {
