@@ -35,6 +35,7 @@ chrome.storage.sync.get(['email', 'id','rows','cols','size'], function(result) {
     size   = result.size;
     //just actually calling drawScreen
     drawScreen("left", size, 1, 1, emotions, rows, cols);
+    getUserReact(window.location.href, userid)
 });
 
 
@@ -168,6 +169,51 @@ function makeSelectedReact(size)
 
 //-------------------FUNCTIONALITY------------------
 
+// function getUserReact
+// purpose: check if a user has already reacted to a page,
+//          and if they have, reflect it in the DOM
+// parameters: url, userid
+// returns: nothing (should call the appropriate rendering function)
+function getUserReact(url, userid) {
+
+    //send request
+    var data = {
+        userid: userid,
+        url:    url
+    };
+    //  TODO make the readystates and statuses actually work
+    console.log("Sending request with userid "+userid+" and url "+url);
+    var req = new XMLHttpRequest();
+    req.open("POST","https://cloudsurf.herokuapp.com/getUserReact", true);
+    req.setRequestHeader("Content-type","application/json");
+    req.onload = function (e) {
+        console.log("Request loaded.")
+        console.log(req.responseText);
+        response = JSON.parse(req.responseText);  
+        setSelectedReact(response["reaction"])
+        if (req.readystate === 4) {
+            console.log("Ready state is 4.")
+            if (req.status === 200) {
+                console.log("Request is returned.")
+                console.log(req.responseText)
+                 
+                set              
+                if (!Object.keys(response).includes("response")){
+                    makeEmojis(JSON.parse(xhr.response), div);                               
+                }
+            }
+            else{
+                console.error(req.statusText)
+            }
+        }
+    }
+    req.onerror = function (e) {
+        console.error(req.statusText)
+    };
+    req.send(JSON.stringify(data))
+}
+
+
 //-------------------opening/closing react tool-----
 // openReacts
 // purpose: allow user to react to the page
@@ -189,7 +235,7 @@ function handleReact(reactType)
     };
     console.log("data: ", data)
     var req = new XMLHttpRequest();
-    req.open("POST","https://the-prism.herokuapp.com/react", true);
+    req.open("POST","https://cloudsurf.herokuapp.com/react", true);
     req.setRequestHeader("Content-type","application/json");
     req.onload = function (e) {
         if (req.readystate === 4) {
