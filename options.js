@@ -18,12 +18,24 @@
 // constructOptions(kButtonColors);
 document.getElementById("submitChanges").onclick = function() {
     console.log("Button got clicked. Time to sync data.")
-    chrome.storage.sync.set({ 
+    chrome.storage.sync.set({
         rows: document.getElementById("rows").value,
         cols: document.getElementById("cols").value,
         size: document.getElementById("size").value },
 			function() {
               console.log("Setting information.")
+              console.log(document.getElementById("rows").value)
+    });
+}
+
+document.getElementById("submitChangesDefault").onclick = function() {
+    console.log("Button got clicked. Time to sync data.")
+    chrome.storage.sync.set({
+        rows: 3,
+        cols: 3,
+        size: 6 },
+			function() {
+              console.log("Setting information to default values.")
               console.log(document.getElementById("rows").value)
     });
 }
