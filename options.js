@@ -1,5 +1,7 @@
-//code to build out the options page, allowing users to choose multiple colors
+//code to build out the cloudsurfer options page options page
 
+// --------this code block is just a remnant of the------
+//------------chrome extension tutorial------------------
 // let page = document.getElementById('buttonDiv');
 // const kButtonColors = ['#3aa757','#e8453c', '#f9bb2d', '#4688f1'];
 // function constructOptions(kButtonColors) {
@@ -16,6 +18,10 @@
 //     }
 // }
 // constructOptions(kButtonColors);
+
+// give buttons corresponding anonymous functions to store
+// user customization data in their personal chrome extension
+//  cloud
 document.getElementById("submitChanges").onclick = function() {
     console.log("Button got clicked. Time to sync data.")
     chrome.storage.sync.set({

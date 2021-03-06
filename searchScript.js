@@ -1,3 +1,10 @@
+// searchScript.js
+// this script allows for google search augmentation by
+//  1. scraping the Google DOM for links
+//  2. requesting data for those links from our database
+//  3. inserting the appopriate emoticons next to each
+//      search result.
+
 
 /*** Get the logged in user from the background.js script. ***/
 chrome.extension.sendMessage({}, function(response) {

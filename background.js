@@ -1,4 +1,12 @@
-// on install, create a user profile with email and id and store it in chrome storage
+// background.js
+//
+// This script runs in the background of the extension and both stores 
+// information in chrome storage and sends information regarding
+// events to content scripts running on pages that users are using.
+
+// on install, create a user profile with email and id and store it
+// in chrome storage. additionally, set size and formatting of the
+// react tool to their defaults.
 chrome.runtime.onInstalled.addListener(function() {
   chrome.identity.getProfileUserInfo(function(result){
       chrome.storage.sync.set({ 
@@ -15,6 +23,11 @@ chrome.runtime.onInstalled.addListener(function() {
             })
   });
 });
+
+
+// Below is the type of code that will be needed to detect
+// "soft reloads" on sites like YouTube, where the URL and
+// page changes but the page doesn't actually reload. 
 
 // // TODO send message to content script
 // chrome.tabs.onUpdated.addListener(function

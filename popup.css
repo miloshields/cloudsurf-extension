@@ -1,3 +1,8 @@
+/* popup.css
+    styling for the popup page, which can be viewed by clicking the
+    cloudsurfer extension icon on the top right of the chrome browser.
+*/
+
 
 body{
     width: 536px;
@@ -6,6 +11,7 @@ body{
 }
 
 /* This styling separates the popup DOM into four main quadrants to hold content */
+/* TODO this can be updated to use the css grid, which is much more malleable */
 #containAll{
     z-index: 2;
     width: 97%;

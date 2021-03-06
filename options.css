@@ -1,11 +1,16 @@
+/* options.css -> styling for the options page,
+which eventually will allow for users to customize their
+cloudsurfing experience in an intutive and non-overwhelming
+way. */
+
+/* this currently just does styling for proof of concept
+functionality */
 body{
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
 }
-
-
 .optionsContain{
     top:0;
     right:0;

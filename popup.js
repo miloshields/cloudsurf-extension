@@ -1,8 +1,8 @@
 // script used by popup.html, which is opened on extension activation from
 // extension bar
 
-//functions to change name, links, rank, discovery points, and regions, respectively
-
+// functions to change name, links, rank, discovery points, and regions, respectively
+// (this functionality is not yet implemented in the system itself.)
 function setName(name)
 {
     document.getElementById("name").innerHTML = name;
@@ -31,14 +31,9 @@ function setRegion(regionNum, region)
     document.getElementById("region"+num).innerHTML = region;
 }
 
-// let changeColor = document.getElementById('changeColor');
-
-// make the previously gray button green by getting the 'color' attribute
-// from our chrome storage
-// chrome.storage.sync.get('color', function(data) {
-//     changeColor.style.backgroundColor = data.color;
-//     changeColor.setAttribute('value', data.color);
-// });
+// this code is a remnant of the chrome extension tutorial, but is worth
+// keeping around because it shows an example of using executescript
+// to edit the DOM of the current chrome tab
 
 // add an onlick event to the button which turns the background color of the page
 // to the same color as the button

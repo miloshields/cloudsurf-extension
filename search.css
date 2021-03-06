@@ -1,3 +1,7 @@
+/* search.css
+    this styling ensures that the emoticons that correspond to pages in
+    search results are placed correctly */
+
 .emojiArea{
     position: relative;
 }
